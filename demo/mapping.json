@@ -1,0 +1,13 @@
+{
+  "key": "email",
+  "updated_at": "updated_at",
+  "fields": {
+    "email": "email",
+    "company": "company",
+    "title": "title",
+    "phone": "phone",
+    "updated_at": "source_updated_at"
+  },
+  "grace_minutes": 0,
+  "fill_drop_threshold": 0.2
+}
