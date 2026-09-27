@@ -9,7 +9,7 @@ from typing import TextIO
 
 from syncwatch.checks import Finding, Severity
 
-MARK = {Severity.BROKEN: "!", Severity.WARNING: "~", Severity.INFO: "i"}
+MARK = {Severity.BROKEN: "BROKEN", Severity.WARNING: "WARNING", Severity.INFO: "INFO"}
 COLOUR = {Severity.BROKEN: "\033[31m", Severity.WARNING: "\033[33m", Severity.INFO: "\033[2m"}
 GREEN, BOLD, RESET = "\033[32m", "\033[1m", "\033[0m"
 
@@ -41,7 +41,7 @@ def render_text(
     colour = use_colour(stream)
     width = max((len(f.check) for f in findings), default=0)
     for f in findings:
-        line = f"{MARK[f.severity]}  {f.check.ljust(width)}  {f.message}"
+        line = f"{MARK[f.severity].ljust(7)}  {f.check.ljust(width)}  {f.message}"
         stream.write((COLOUR[f.severity] + line + RESET if colour else line) + "\n")
 
     broken, warn = counts(findings)
